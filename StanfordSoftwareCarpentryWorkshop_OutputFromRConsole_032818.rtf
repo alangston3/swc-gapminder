@@ -1,0 +1,1004 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.15063}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 > # read in cat data\par
+> cats <-  read.csv("data/feline_data.csv")\par
+> View(cats)\par
+> cats\par
+    coat weight likes_string\par
+1 calico    2.1            1\par
+2  black    5.0            0\par
+3  tabby    3.2            1\par
+4  black    4.1            1\par
+> # pull one data column\par
+> cats$coat\par
+[1] calico black  tabby  black \par
+Levels: black calico tabby\par
+> cats$weight + 2\par
+[1] 4.1 7.0 5.2 6.1\par
+> cats$coat + cats$weight\par
+[1] NA NA NA NA\par
+Warning message:\par
+In Ops.factor(cats$coat, cats$weight) : \lquote +\rquote  not meaningful for factors\par
+> typeof(cats$coat)\par
+[1] "integer"\par
+> typeof(cats$weight)\par
+[1] "double"\par
+> typeof(1L)\par
+[1] "integer"\par
+> typeof(1 + 1i)\par
+[1] "complex"\par
+> typeof(FALSE)\par
+[1] "logical"\par
+> typeof('banana')\par
+[1] "character"\par
+> combo_vector <-  c(2,4,5)\par
+> quiz_vector_1 <- c(2, 6, '3')\par
+> typeof(quiz_vector_1)\par
+[1] "character"\par
+> quiz_vector_2 <- c('a', TRUE)\par
+> typeof(quiz_vector_2)\par
+[1] "character"\par
+> quiz_vector_3 <- c(0, TRUE)\par
+> typeof(quiz_vector_3)\par
+[1] "double"\par
+> class(quiz_vector_3)\par
+[1] "numeric"\par
+> quiz_vector_4 <- c(NA,0, TRUE)\par
+> typeof(quiz_vector_4)\par
+[1] "double"\par
+> rm(quiz_vector_4)\par
+> combo_vector <- c(2,4,5)\par
+> typeof(combo_vector)\par
+[1] "double"\par
+> as.character(combo_vector)\par
+[1] "2" "4" "5"\par
+> logical_Vector <- c(1,0,0,1)\par
+> typeof(logical_Vector)\par
+[1] "double"\par
+> as.logical(logical_Vector)\par
+[1]  TRUE FALSE FALSE  TRUE\par
+> typeof(logical_Vector)\par
+[1] "double"\par
+> View(cats)\par
+> cats <- read.csv("data/feline_data.csv")\par
+> cats <- read.csv("data/feline_data.csv")\par
+> cats$coat\par
+[1] calico black  tabby  black  <NA>         \par
+Levels:  black calico tabby\par
+> cats <- read.csv("data/feline_data.csv")\par
+> cats$coat\par
+[1] calico black  tabby  black  <NA>   <NA>  \par
+Levels: black calico tabby\par
+> cats <- read.csv("data/feline_data.csv")\par
+> cats$coat\par
+[1] calico black  tabby  black  <NA>   gray  \par
+Levels: black calico gray tabby\par
+> cats$likes_string\par
+[1]  1  0  1  1  0 NA\par
+> cats <- read.csv("data/feline_data.csv")\par
+> cats$coat\par
+[1] calico black  tabby  black  <NA>   gray         \par
+Levels:  black calico gray tabby\par
+> cats <- read.csv("data/feline_data.csv")\par
+> #factors\par
+> str(cats$coat)\par
+ Factor w/ 3 levels "black","calico",..: 2 1 3 1\par
+> levels(cats$coat)\par
+[1] "black"  "calico" "tabby" \par
+> cats$coat\par
+[1] calico black  tabby  black \par
+Levels: black calico tabby\par
+> factor(cats$coat, levels = c("tabby","calico","black"))\par
+[1] calico black  tabby  black \par
+Levels: tabby calico black\par
+> str(cats$coat)\par
+ Factor w/ 3 levels "black","calico",..: 2 1 3 1\par
+> levels(cats$coat)\par
+[1] "black"  "calico" "tabby" \par
+> typeof(cats$coat)\par
+[1] "integer"\par
+> mean(cats$coat)\par
+[1] NA\par
+Warning message:\par
+In mean.default(cats$coat) :\par
+  argument is not numeric or logical: returning NA\par
+> mean(cats$weight)\par
+[1] 3.6\par
+> #lists\par
+> list-example <-  list(c(1,2,3), "a", TRUE)\par
+Error in list - example <- list(c(1, 2, 3), "a", TRUE) : \par
+  could not find function "-<-"\par
+> remove(list-example)\par
+Error in remove(list - example) : \par
+  ... must contain names or character strings\par
+> list_example <-  list(c(1,2,3), "a", TRUE)\par
+> list_example\par
+[[1]]\par
+[1] 1 2 3\par
+\par
+[[2]]\par
+[1] "a"\par
+\par
+[[3]]\par
+[1] TRUE\par
+\par
+> #matrix\par
+> matrix(1:12)\par
+      [,1]\par
+ [1,]    1\par
+ [2,]    2\par
+ [3,]    3\par
+ [4,]    4\par
+ [5,]    5\par
+ [6,]    6\par
+ [7,]    7\par
+ [8,]    8\par
+ [9,]    9\par
+[10,]   10\par
+[11,]   11\par
+[12,]   12\par
+> matrix(1:12, ncol=2)\par
+     [,1] [,2]\par
+[1,]    1    7\par
+[2,]    2    8\par
+[3,]    3    9\par
+[4,]    4   10\par
+[5,]    5   11\par
+[6,]    6   12\par
+> matrix(1:12, ncol=2, byrow=TRUE)\par
+     [,1] [,2]\par
+[1,]    1    2\par
+[2,]    3    4\par
+[3,]    5    6\par
+[4,]    7    8\par
+[5,]    9   10\par
+[6,]   11   12\par
+> cats <- read.csv("data/feline_data.csv")\par
+> #dataframes\par
+> gapminder <- read.csv("data/gapminder-FiveYearData.csv")\par
+> View(gapminder)\par
+> View(gapminder)\par
+> range(gapminder$year)\par
+[1] 1952 2007\par
+> str(gapminder)\par
+'data.frame':\tab 1704 obs. of  6 variables:\par
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...\par
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...\par
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...\par
+ $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...\par
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...\par
+ $ gdpPercap: num  779 821 853 836 740 ...\par
+> #gapminder is data on contries (year, population size, continent, life expectation, gdp percentage)\par
+> head(gapminder)\par
+      country year      pop continent lifeExp gdpPercap\par
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453\par
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530\par
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007\par
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971\par
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811\par
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134\par
+> count.fields(gapminder$country)\par
+Error in count.fields(gapminder$country) : \par
+  'file' must be a character string or connection\par
+> ?count\par
+No documentation for \lquote count\rquote  in specified packages and libraries:\par
+you could try \lquote ??count\rquote\par
+> 1704/6\par
+[1] 284\par
+> 1704/142\par
+[1] 12\par
+> 2007-1952\par
+[1] 55\par
+> colnames(gapminder)\par
+[1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"\par
+> #subsetting\par
+> x <- c(5.4, 6.2, 7.1,4.8,7.5)\par
+> #subsetting\par
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)\par
+> names(x) <- c('a', 'b', 'c', 'd', 'e')\par
+> x\par
+  a   b   c   d   e \par
+5.4 6.2 7.1 4.8 7.5 \par
+> x[1]\par
+  a \par
+5.4 \par
+> x[5]\par
+  e \par
+7.5 \par
+> x[c(2,3)]\par
+  b   c \par
+6.2 7.1 \par
+> x[1:4]\par
+  a   b   c   d \par
+5.4 6.2 7.1 4.8 \par
+> x[c(1, 2, 1)]\par
+  a   b   a \par
+5.4 6.2 5.4 \par
+> x[-2]\par
+  a   c   d   e \par
+5.4 7.1 4.8 7.5 \par
+> x[-c(2,3)]\par
+  a   d   e \par
+5.4 4.8 7.5 \par
+> x[c('a', 'b')]\par
+  a   b \par
+5.4 6.2 \par
+> x[xc('a', 'b')]\par
+Error in xc("a", "b") : could not find function "xc"\par
+> x[-c('a', 'b')]#doesn't work, R thinks we've created a characters and there's no negative of a character\par
+Error in -c("a", "b") : invalid argument to unary operator\par
+> names(x)\par
+[1] "a" "b" "c" "d" "e"\par
+> y <- x[-c(2,3)]\par
+> y\par
+  a   d   e \par
+5.4 4.8 7.5 \par
+> names (x) != c('a','b')\par
+[1] FALSE FALSE  TRUE  TRUE  TRUE\par
+Warning message:\par
+In names(x) != c("a", "b") :\par
+  longer object length is not a multiple of shorter object length\par
+> names (x) != c('a')\par
+[1] FALSE  TRUE  TRUE  TRUE  TRUE\par
+> typeof(gapminder$pop)\par
+[1] "double"\par
+> names (x) != c('a','b')\par
+[1] FALSE FALSE  TRUE  TRUE  TRUE\par
+Warning message:\par
+In names(x) != c("a", "b") :\par
+  longer object length is not a multiple of shorter object length\par
+> x[!names(x) %in% c('a', 'b')]\par
+  c   d   e \par
+7.1 4.8 7.5 \par
+> !names(x) %n% c('a', 'c')\par
+Error in names(x) %n% c("a", "c") : could not find function "%n%"\par
+> x[!names(x) %in% c('a', 'c')]\par
+  b   d   e \par
+6.2 4.8 7.5 \par
+> !names(x) %n% c('a', 'b')\par
+Error in names(x) %n% c("a", "b") : could not find function "%n%"\par
+> !names(x) %n% c('a', 'c')\par
+Error in names(x) %n% c("a", "c") : could not find function "%n%"\par
+> !names(x) %in% c('a', 'c')\par
+[1] FALSE  TRUE FALSE  TRUE  TRUE\par
+> !names(x) %in% c('a', 'b')\par
+[1] FALSE FALSE  TRUE  TRUE  TRUE\par
+> x[!names(x) %in% c('a', 'c')]\par
+  b   d   e \par
+6.2 4.8 7.5 \par
+> x > 7\par
+    a     b     c     d     e \par
+FALSE FALSE  TRUE FALSE  TRUE \par
+> x\par
+  a   b   c   d   e \par
+5.4 6.2 7.1 4.8 7.5 \par
+> x[c('b', 'c', 'd')]\par
+  b   c   d \par
+6.2 7.1 4.8 \par
+> x[!names(x) %in% c('a','e')]\par
+  b   c   d \par
+6.2 7.1 4.8 \par
+> x[c(4>x>7)]\par
+Error: unexpected '>' in "x[c(4>x>"\par
+> x>7\par
+    a     b     c     d     e \par
+FALSE FALSE  TRUE FALSE  TRUE \par
+> x[x>7]\par
+  c   e \par
+7.1 7.5 \par
+> head(gapminder$pop)\par
+[1]  8425333  9240934 10267083 11537966 13079460 14880372\par
+> head(gapminder[3])\par
+       pop\par
+1  8425333\par
+2  9240934\par
+3 10267083\par
+4 11537966\par
+5 13079460\par
+6 14880372\par
+> head(gapminder[["pop"]])\par
+[1]  8425333  9240934 10267083 11537966 13079460 14880372\par
+> gapminder[1:3,]\par
+      country year      pop continent lifeExp gdpPercap\par
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453\par
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530\par
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007\par
+> x[2:4]\par
+  b   c   d \par
+6.2 7.1 4.8 \par
+> x[2,3,4]\par
+Error in x[2, 3, 4] : incorrect number of dimensions\par
+> x[c(2,3,4)]\par
+  b   c   d \par
+6.2 7.1 4.8 \par
+> head(gapminder$year[1957]\par
++ head(gapminder$year[1957])\par
+Error: unexpected symbol in:\par
+"head(gapminder$year[1957]\par
+head"\par
+> head(gapminder$year["1957"])\par
+[1] NA\par
+> head(gapminder$year[6])\par
+[1] 1977\par
+> head(gapminder$year[6,])\par
+Error in gapminder$year[6, ] : incorrect number of dimensions\par
+> head(gapminder$year[2,])\par
+Error in gapminder$year[2, ] : incorrect number of dimensions\par
+> head(gapminder$year[1957,])\par
+Error in gapminder$year[1957, ] : incorrect number of dimensions\par
+> head(gapminder[2==1957])\par
+data frame with 0 columns and 6 rows\par
+> gapminder[gapminder$year == 1957]\par
+Error in `[.data.frame`(gapminder, gapminder$year == 1957) : \par
+  undefined columns selected\par
+> gapminder[gapminder$year[1957]]\par
+Error in `[.data.frame`(gapminder, gapminder$year[1957]) : \par
+  undefined columns selected\par
+> gapminder$year[1957,]\par
+Error in gapminder$year[1957, ] : incorrect number of dimensions\par
+> gapminder[2 == 1957,]\par
+[1] country   year      pop       continent lifeExp   gdpPercap\par
+<0 rows> (or 0-length row.names)\par
+> head(gapminder$year[6])\par
+[1] 1977\par
+> head(gapminder$year[5])\par
+[1] 1972\par
+> head(gapminder$year[3])\par
+[1] 1962\par
+> head(gapminder$year[2])\par
+[1] 1957\par
+> head(gapminder$year[2,])\par
+Error in gapminder$year[2, ] : incorrect number of dimensions\par
+> gapminder[gapminder$year = 1957,]\par
+Error: unexpected '=' in "gapminder[gapminder$year ="\par
+> gapminder[gapminder$year == 1957,]\par
+                      country year       pop continent  lifeExp   gdpPercap\par
+2                 Afghanistan 1957   9240934      Asia 30.33200    820.8530\par
+14                    Albania 1957   1476505    Europe 59.28000   1942.2842\par
+26                    Algeria 1957  10270856    Africa 45.68500   3013.9760\par
+38                     Angola 1957   4561361    Africa 31.99900   3827.9405\par
+50                  Argentina 1957  19610538  Americas 64.39900   6856.8562\par
+62                  Australia 1957   9712569   Oceania 70.33000  10949.6496\par
+74                    Austria 1957   6965860    Europe 67.48000   8842.5980\par
+86                    Bahrain 1957    138655      Asia 53.83200  11635.7995\par
+98                 Bangladesh 1957  51365468      Asia 39.34800    661.6375\par
+110                   Belgium 1957   8989111    Europe 69.24000   9714.9606\par
+122                     Benin 1957   1925173    Africa 40.35800    959.6011\par
+134                   Bolivia 1957   3211738  Americas 41.89000   2127.6863\par
+146    Bosnia and Herzegovina 1957   3076000    Europe 58.45000   1353.9892\par
+158                  Botswana 1957    474639    Africa 49.61800    918.2325\par
+170                    Brazil 1957  65551171  Americas 53.28500   2487.3660\par
+182                  Bulgaria 1957   7651254    Europe 66.61000   3008.6707\par
+194              Burkina Faso 1957   4713416    Africa 34.90600    617.1835\par
+206                   Burundi 1957   2667518    Africa 40.53300    379.5646\par
+218                  Cambodia 1957   5322536      Asia 41.36600    434.0383\par
+230                  Cameroon 1957   5359923    Africa 40.42800   1313.0481\par
+242                    Canada 1957  17010154  Americas 69.96000  12489.9501\par
+254  Central African Republic 1957   1392284    Africa 37.46400   1190.8443\par
+266                      Chad 1957   2894855    Africa 39.88100   1308.4956\par
+278                     Chile 1957   7048426  Americas 56.07400   4315.6227\par
+290                     China 1957 637408000      Asia 50.54896    575.9870\par
+302                  Colombia 1957  14485993  Americas 55.11800   2323.8056\par
+314                   Comoros 1957    170928    Africa 42.46000   1211.1485\par
+326           Congo Dem. Rep. 1957  15577932    Africa 40.65200    905.8602\par
+338                Congo Rep. 1957    940458    Africa 45.05300   2315.0566\par
+350                Costa Rica 1957   1112300  Americas 60.02600   2990.0108\par
+362             Cote d'Ivoire 1957   3300000    Africa 42.46900   1500.8959\par
+374                   Croatia 1957   3991242    Europe 64.77000   4338.2316\par
+386                      Cuba 1957   6640752  Americas 62.32500   6092.1744\par
+398            Czech Republic 1957   9513758    Europe 69.03000   8256.3439\par
+410                   Denmark 1957   4487831    Europe 71.81000  11099.6593\par
+422                  Djibouti 1957     71851    Africa 37.32800   2864.9691\par
+434        Dominican Republic 1957   2923186  Americas 49.82800   1544.4030\par
+446                   Ecuador 1957   4058385  Americas 51.35600   3780.5467\par
+458                     Egypt 1957  25009741    Africa 44.44400   1458.9153\par
+470               El Salvador 1957   2355805  Americas 48.57000   3421.5232\par
+482         Equatorial Guinea 1957    232922    Africa 35.98300    426.0964\par
+494                   Eritrea 1957   1542611    Africa 38.04700    344.1619\par
+506                  Ethiopia 1957  22815614    Africa 36.66700    378.9042\par
+518                   Finland 1957   4324000    Europe 67.49000   7545.4154\par
+530                    France 1957  44310863    Europe 68.93000   8662.8349\par
+542                     Gabon 1957    434904    Africa 38.99900   4976.1981\par
+554                    Gambia 1957    323150    Africa 32.06500    520.9267\par
+566                   Germany 1957  71019069    Europe 69.10000  10187.8267\par
+578                     Ghana 1957   6391288    Africa 44.77900   1043.5615\par
+590                    Greece 1957   8096218    Europe 67.86000   4916.2999\par
+602                 Guatemala 1957   3640876  Americas 44.14200   2617.1560\par
+614                    Guinea 1957   2876726    Africa 34.55800    576.2670\par
+626             Guinea-Bissau 1957    601095    Africa 33.48900    431.7905\par
+638                     Haiti 1957   3507701  Americas 40.69600   1726.8879\par
+650                  Honduras 1957   1770390  Americas 44.66500   2220.4877\par
+662           Hong Kong China 1957   2736300      Asia 64.75000   3629.0765\par
+674                   Hungary 1957   9839000    Europe 66.41000   6040.1800\par
+686                   Iceland 1957    165110    Europe 73.47000   9244.0014\par
+698                     India 1957 409000000      Asia 40.24900    590.0620\par
+710                 Indonesia 1957  90124000      Asia 39.91800    858.9003\par
+722                      Iran 1957  19792000      Asia 47.18100   3290.2576\par
+734                      Iraq 1957   6248643      Asia 48.43700   6229.3336\par
+746                   Ireland 1957   2878220    Europe 68.90000   5599.0779\par
+758                    Israel 1957   1944401      Asia 67.84000   5385.2785\par
+770                     Italy 1957  49182000    Europe 67.81000   6248.6562\par
+782                   Jamaica 1957   1535090  Americas 62.61000   4756.5258\par
+794                     Japan 1957  91563009      Asia 65.50000   4317.6944\par
+806                    Jordan 1957    746559      Asia 45.66900   1886.0806\par
+818                     Kenya 1957   7454779    Africa 44.68600    944.4383\par
+830           Korea Dem. Rep. 1957   9411381      Asia 54.08100   1571.1347\par
+842                Korea Rep. 1957  22611552      Asia 52.68100   1487.5935\par
+854                    Kuwait 1957    212846      Asia 58.03300 113523.1329\par
+866                   Lebanon 1957   1647412      Asia 59.48900   6089.7869\par
+878                   Lesotho 1957    813338    Africa 45.04700    335.9971\par
+890                   Liberia 1957    975950    Africa 39.48600    620.9700\par
+902                     Libya 1957   1201578    Africa 45.28900   3448.2844\par
+914                Madagascar 1957   5181679    Africa 38.86500   1589.2027\par
+926                    Malawi 1957   3221238    Africa 37.20700    416.3698\par
+938                  Malaysia 1957   7739235      Asia 52.10200   1810.0670\par
+950                      Mali 1957   4241884    Africa 35.30700    490.3822\par
+962                Mauritania 1957   1076852    Africa 42.33800    846.1203\par
+974                 Mauritius 1957    609816    Africa 58.08900   2034.0380\par
+986                    Mexico 1957  35015548  Americas 55.19000   4131.5466\par
+998                  Mongolia 1957    882134      Asia 45.24800    912.6626\par
+1010               Montenegro 1957    442829    Europe 61.44800   3682.2599\par
+1022                  Morocco 1957  11406350    Africa 45.42300   1642.0023\par
+1034               Mozambique 1957   7038035    Africa 33.77900    495.5868\par
+1046                  Myanmar 1957  21731844      Asia 41.90500    350.0000\par
+1058                  Namibia 1957    548080    Africa 45.22600   2621.4481\par
+1070                    Nepal 1957   9682338      Asia 37.68600    597.9364\par
+1082              Netherlands 1957  11026383    Europe 72.99000  11276.1934\par
+1094              New Zealand 1957   2229407   Oceania 70.26000  12247.3953\par
+1106                Nicaragua 1957   1358828  Americas 45.43200   3457.4159\par
+1118                    Niger 1957   3692184    Africa 38.59800    835.5234\par
+1130                  Nigeria 1957  37173340    Africa 37.80200   1100.5926\par
+1142                   Norway 1957   3491938    Europe 73.44000  11653.9730\par
+1154                     Oman 1957    561977      Asia 40.08000   2242.7466\par
+1166                 Pakistan 1957  46679944      Asia 45.55700    747.0835\par
+1178                   Panama 1957   1063506  Americas 59.20100   2961.8009\par
+1190                 Paraguay 1957   1770902  Americas 63.19600   2046.1547\par
+1202                     Peru 1957   9146100  Americas 46.26300   4245.2567\par
+1214              Philippines 1957  26072194      Asia 51.33400   1547.9448\par
+1226                   Poland 1957  28235346    Europe 65.77000   4734.2530\par
+1238                 Portugal 1957   8817650    Europe 61.51000   3774.5717\par
+1250              Puerto Rico 1957   2260000  Americas 68.54000   3907.1562\par
+1262                  Reunion 1957    308700    Africa 55.09000   2769.4518\par
+1274                  Romania 1957  17829327    Europe 64.10000   3943.3702\par
+1286                   Rwanda 1957   2822082    Africa 41.50000    540.2894\par
+1298    Sao Tome and Principe 1957     61325    Africa 48.94500    860.7369\par
+1310             Saudi Arabia 1957   4419650      Asia 42.86800   8157.5912\par
+1322                  Senegal 1957   3054547    Africa 39.32900   1567.6530\par
+1334                   Serbia 1957   7271135    Europe 61.68500   4981.0909\par
+1346             Sierra Leone 1957   2295678    Africa 31.57000   1004.4844\par
+1358                Singapore 1957   1445929      Asia 63.17900   2843.1044\par
+1370          Slovak Republic 1957   3844277    Europe 67.45000   6093.2630\par
+1382                 Slovenia 1957   1533070    Europe 67.85000   5862.2766\par
+1394                  Somalia 1957   2780415    Africa 34.97700   1258.1474\par
+1406             South Africa 1957  16151549    Africa 47.98500   5487.1042\par
+1418                    Spain 1957  29841614    Europe 66.66000   4564.8024\par
+1430                Sri Lanka 1957   9128546      Asia 61.45600   1072.5466\par
+1442                    Sudan 1957   9753392    Africa 39.62400   1770.3371\par
+1454                Swaziland 1957    326741    Africa 43.42400   1244.7084\par
+1466                   Sweden 1957   7363802    Europe 72.49000   9911.8782\par
+1478              Switzerland 1957   5126000    Europe 70.56000  17909.4897\par
+1490                    Syria 1957   4149908      Asia 48.28400   2117.2349\par
+1502                   Taiwan 1957  10164215      Asia 62.40000   1507.8613\par
+1514                 Tanzania 1957   9452826    Africa 42.97400    698.5356\par
+1526                 Thailand 1957  25041917      Asia 53.63000    793.5774\par
+1538                     Togo 1957   1357445    Africa 41.20800    925.9083\par
+1550      Trinidad and Tobago 1957    764900  Americas 61.80000   4100.3934\par
+1562                  Tunisia 1957   3950849    Africa 47.10000   1395.2325\par
+1574                   Turkey 1957  25670939    Europe 48.07900   2218.7543\par
+1586                   Uganda 1957   6675501    Africa 42.57100    774.3711\par
+1598           United Kingdom 1957  51430000    Europe 70.42000  11283.1779\par
+1610            United States 1957 171984000  Americas 69.49000  14847.1271\par
+1622                  Uruguay 1957   2424959  Americas 67.04400   6150.7730\par
+1634                Venezuela 1957   6702668  Americas 57.90700   9802.4665\par
+1646                  Vietnam 1957  28998543      Asia 42.88700    676.2854\par
+1658       West Bank and Gaza 1957   1070439      Asia 45.67100   1827.0677\par
+1670               Yemen Rep. 1957   5498090      Asia 33.97000    804.8305\par
+1682                   Zambia 1957   3016000    Africa 44.07700   1311.9568\par
+1694                 Zimbabwe 1957   3646340    Africa 50.46900    518.7643\par
+> gapminder[,-1:4]\par
+Error in .subset(x, j) : only 0's may be mixed with negative subscripts\par
+> gapminder[,-c(1:4)]\par
+      lifeExp   gdpPercap\par
+1    28.80100    779.4453\par
+2    30.33200    820.8530\par
+3    31.99700    853.1007\par
+4    34.02000    836.1971\par
+5    36.08800    739.9811\par
+6    38.43800    786.1134\par
+7    39.85400    978.0114\par
+8    40.82200    852.3959\par
+9    41.67400    649.3414\par
+10   41.76300    635.3414\par
+11   42.12900    726.7341\par
+12   43.82800    974.5803\par
+13   55.23000   1601.0561\par
+14   59.28000   1942.2842\par
+15   64.82000   2312.8890\par
+16   66.22000   2760.1969\par
+17   67.69000   3313.4222\par
+18   68.93000   3533.0039\par
+19   70.42000   3630.8807\par
+20   72.00000   3738.9327\par
+21   71.58100   2497.4379\par
+22   72.95000   3193.0546\par
+23   75.65100   4604.2117\par
+24   76.42300   5937.0295\par
+25   43.07700   2449.0082\par
+26   45.68500   3013.9760\par
+27   48.30300   2550.8169\par
+28   51.40700   3246.9918\par
+29   54.51800   4182.6638\par
+30   58.01400   4910.4168\par
+31   61.36800   5745.1602\par
+32   65.79900   5681.3585\par
+33   67.74400   5023.2166\par
+34   69.15200   4797.2951\par
+35   70.99400   5288.0404\par
+36   72.30100   6223.3675\par
+37   30.01500   3520.6103\par
+38   31.99900   3827.9405\par
+39   34.00000   4269.2767\par
+40   35.98500   5522.7764\par
+41   37.92800   5473.2880\par
+42   39.48300   3008.6474\par
+43   39.94200   2756.9537\par
+44   39.90600   2430.2083\par
+45   40.64700   2627.8457\par
+46   40.96300   2277.1409\par
+47   41.00300   2773.2873\par
+48   42.73100   4797.2313\par
+49   62.48500   5911.3151\par
+50   64.39900   6856.8562\par
+51   65.14200   7133.1660\par
+52   65.63400   8052.9530\par
+53   67.06500   9443.0385\par
+54   68.48100  10079.0267\par
+55   69.94200   8997.8974\par
+56   70.77400   9139.6714\par
+57   71.86800   9308.4187\par
+58   73.27500  10967.2820\par
+59   74.34000   8797.6407\par
+60   75.32000  12779.3796\par
+61   69.12000  10039.5956\par
+62   70.33000  10949.6496\par
+63   70.93000  12217.2269\par
+64   71.10000  14526.1246\par
+65   71.93000  16788.6295\par
+66   73.49000  18334.1975\par
+67   74.74000  19477.0093\par
+68   76.32000  21888.8890\par
+69   77.56000  23424.7668\par
+70   78.83000  26997.9366\par
+71   80.37000  30687.7547\par
+72   81.23500  34435.3674\par
+73   66.80000   6137.0765\par
+74   67.48000   8842.5980\par
+75   69.54000  10750.7211\par
+76   70.14000  12834.6024\par
+77   70.63000  16661.6256\par
+78   72.17000  19749.4223\par
+79   73.18000  21597.0836\par
+80   74.94000  23687.8261\par
+81   76.04000  27042.0187\par
+82   77.51000  29095.9207\par
+83   78.98000  32417.6077\par
+84   79.82900  36126.4927\par
+85   50.93900   9867.0848\par
+86   53.83200  11635.7995\par
+87   56.92300  12753.2751\par
+88   59.92300  14804.6727\par
+89   63.30000  18268.6584\par
+90   65.59300  19340.1020\par
+91   69.05200  19211.1473\par
+92   70.75000  18524.0241\par
+93   72.60100  19035.5792\par
+94   73.92500  20292.0168\par
+95   74.79500  23403.5593\par
+96   75.63500  29796.0483\par
+97   37.48400    684.2442\par
+98   39.34800    661.6375\par
+99   41.21600    686.3416\par
+100  43.45300    721.1861\par
+101  45.25200    630.2336\par
+102  46.92300    659.8772\par
+103  50.00900    676.9819\par
+104  52.81900    751.9794\par
+105  56.01800    837.8102\par
+106  59.41200    972.7700\par
+107  62.01300   1136.3904\par
+108  64.06200   1391.2538\par
+109  68.00000   8343.1051\par
+110  69.24000   9714.9606\par
+111  70.25000  10991.2068\par
+112  70.94000  13149.0412\par
+113  71.44000  16672.1436\par
+114  72.80000  19117.9745\par
+115  73.93000  20979.8459\par
+116  75.35000  22525.5631\par
+117  76.46000  25575.5707\par
+118  77.53000  27561.1966\par
+119  78.32000  30485.8838\par
+120  79.44100  33692.6051\par
+121  38.22300   1062.7522\par
+122  40.35800    959.6011\par
+123  42.61800    949.4991\par
+124  44.88500   1035.8314\par
+125  47.01400   1085.7969\par
+126  49.19000   1029.1613\par
+127  50.90400   1277.8976\par
+128  52.33700   1225.8560\par
+129  53.91900   1191.2077\par
+130  54.77700   1232.9753\par
+131  54.40600   1372.8779\par
+132  56.72800   1441.2849\par
+133  40.41400   2677.3263\par
+134  41.89000   2127.6863\par
+135  43.42800   2180.9725\par
+136  45.03200   2586.8861\par
+137  46.71400   2980.3313\par
+138  50.02300   3548.0978\par
+139  53.85900   3156.5105\par
+140  57.25100   2753.6915\par
+141  59.95700   2961.6997\par
+142  62.05000   3326.1432\par
+143  63.88300   3413.2627\par
+144  65.55400   3822.1371\par
+145  53.82000    973.5332\par
+146  58.45000   1353.9892\par
+147  61.93000   1709.6837\par
+148  64.79000   2172.3524\par
+149  67.45000   2860.1698\par
+150  69.86000   3528.4813\par
+151  70.69000   4126.6132\par
+152  71.14000   4314.1148\par
+153  72.17800   2546.7814\par
+154  73.24400   4766.3559\par
+155  74.09000   6018.9752\par
+156  74.85200   7446.2988\par
+157  47.62200    851.2411\par
+158  49.61800    918.2325\par
+159  51.52000    983.6540\par
+160  53.29800   1214.7093\par
+161  56.02400   2263.6111\par
+162  59.31900   3214.8578\par
+163  61.48400   4551.1421\par
+164  63.62200   6205.8839\par
+165  62.74500   7954.1116\par
+166  52.55600   8647.1423\par
+167  46.63400  11003.6051\par
+168  50.72800  12569.8518\par
+169  50.91700   2108.9444\par
+170  53.28500   2487.3660\par
+171  55.66500   3336.5858\par
+172  57.63200   3429.8644\par
+173  59.50400   4985.7115\par
+174  61.48900   6660.1187\par
+175  63.33600   7030.8359\par
+176  65.20500   7807.0958\par
+177  67.05700   6950.2830\par
+178  69.38800   7957.9808\par
+179  71.00600   8131.2128\par
+180  72.39000   9065.8008\par
+181  59.60000   2444.2866\par
+182  66.61000   3008.6707\par
+183  69.51000   4254.3378\par
+184  70.42000   5577.0028\par
+185  70.90000   6597.4944\par
+186  70.81000   7612.2404\par
+187  71.08000   8224.1916\par
+188  71.34000   8239.8548\par
+189  71.19000   6302.6234\par
+190  70.32000   5970.3888\par
+191  72.14000   7696.7777\par
+192  73.00500  10680.7928\par
+193  31.97500    543.2552\par
+194  34.90600    617.1835\par
+195  37.81400    722.5120\par
+196  40.69700    794.8266\par
+197  43.59100    854.7360\par
+198  46.13700    743.3870\par
+199  48.12200    807.1986\par
+200  49.55700    912.0631\par
+201  50.26000    931.7528\par
+202  50.32400    946.2950\par
+203  50.65000   1037.6452\par
+204  52.29500   1217.0330\par
+205  39.03100    339.2965\par
+206  40.53300    379.5646\par
+207  42.04500    355.2032\par
+208  43.54800    412.9775\par
+209  44.05700    464.0995\par
+210  45.91000    556.1033\par
+211  47.47100    559.6032\par
+212  48.21100    621.8188\par
+213  44.73600    631.6999\par
+214  45.32600    463.1151\par
+215  47.36000    446.4035\par
+216  49.58000    430.0707\par
+217  39.41700    368.4693\par
+218  41.36600    434.0383\par
+219  43.41500    496.9136\par
+220  45.41500    523.4323\par
+221  40.31700    421.6240\par
+222  31.22000    524.9722\par
+223  50.95700    624.4755\par
+224  53.91400    683.8956\par
+225  55.80300    682.3032\par
+226  56.53400    734.2852\par
+227  56.75200    896.2260\par
+228  59.72300   1713.7787\par
+229  38.52300   1172.6677\par
+230  40.42800   1313.0481\par
+231  42.64300   1399.6074\par
+232  44.79900   1508.4531\par
+233  47.04900   1684.1465\par
+234  49.35500   1783.4329\par
+235  52.96100   2367.9833\par
+236  54.98500   2602.6642\par
+237  54.31400   1793.1633\par
+238  52.19900   1694.3375\par
+239  49.85600   1934.0114\par
+240  50.43000   2042.0952\par
+241  68.75000  11367.1611\par
+242  69.96000  12489.9501\par
+243  71.30000  13462.4855\par
+244  72.13000  16076.5880\par
+245  72.88000  18970.5709\par
+246  74.21000  22090.8831\par
+247  75.76000  22898.7921\par
+248  76.86000  26626.5150\par
+249  77.95000  26342.8843\par
+250  78.61000  28954.9259\par
+251  79.77000  33328.9651\par
+252  80.65300  36319.2350\par
+253  35.46300   1071.3107\par
+254  37.46400   1190.8443\par
+255  39.47500   1193.0688\par
+256  41.47800   1136.0566\par
+257  43.45700   1070.0133\par
+258  46.77500   1109.3743\par
+259  48.29500    956.7530\par
+260  50.48500    844.8764\par
+261  49.39600    747.9055\par
+262  46.06600    740.5063\par
+263  43.30800    738.6906\par
+264  44.74100    706.0165\par
+265  38.09200   1178.6659\par
+266  39.88100   1308.4956\par
+267  41.71600   1389.8176\par
+268  43.60100   1196.8106\par
+269  45.56900   1104.1040\par
+270  47.38300   1133.9850\par
+271  49.51700    797.9081\par
+272  51.05100    952.3861\par
+273  51.72400   1058.0643\par
+274  51.57300   1004.9614\par
+275  50.52500   1156.1819\par
+276  50.65100   1704.0637\par
+277  54.74500   3939.9788\par
+278  56.07400   4315.6227\par
+279  57.92400   4519.0943\par
+280  60.52300   5106.6543\par
+281  63.44100   5494.0244\par
+282  67.05200   4756.7638\par
+283  70.56500   5095.6657\par
+284  72.49200   5547.0638\par
+285  74.12600   7596.1260\par
+286  75.81600  10118.0532\par
+287  77.86000  10778.7838\par
+288  78.55300  13171.6388\par
+289  44.00000    400.4486\par
+290  50.54896    575.9870\par
+291  44.50136    487.6740\par
+292  58.38112    612.7057\par
+293  63.11888    676.9001\par
+294  63.96736    741.2375\par
+295  65.52500    962.4214\par
+296  67.27400   1378.9040\par
+297  68.69000   1655.7842\par
+298  70.42600   2289.2341\par
+299  72.02800   3119.2809\par
+300  72.96100   4959.1149\par
+301  50.64300   2144.1151\par
+302  55.11800   2323.8056\par
+303  57.86300   2492.3511\par
+304  59.96300   2678.7298\par
+305  61.62300   3264.6600\par
+306  63.83700   3815.8079\par
+307  66.65300   4397.5757\par
+308  67.76800   4903.2191\par
+309  68.42100   5444.6486\par
+310  70.31300   6117.3617\par
+311  71.68200   5755.2600\par
+312  72.88900   7006.5804\par
+313  40.71500   1102.9909\par
+314  42.46000   1211.1485\par
+315  44.46700   1406.6483\par
+316  46.47200   1876.0296\par
+317  48.94400   1937.5777\par
+318  50.93900   1172.6030\par
+319  52.93300   1267.1001\par
+320  54.92600   1315.9808\par
+321  57.93900   1246.9074\par
+322  60.66000   1173.6182\par
+323  62.97400   1075.8116\par
+324  65.15200    986.1479\par
+325  39.14300    780.5423\par
+326  40.65200    905.8602\par
+327  42.12200    896.3146\par
+328  44.05600    861.5932\par
+329  45.98900    904.8961\par
+330  47.80400    795.7573\par
+331  47.78400    673.7478\par
+332  47.41200    672.7748\par
+333  45.54800    457.7192\par
+334  42.58700    312.1884\par
+335  44.96600    241.1659\par
+336  46.46200    277.5519\par
+337  42.11100   2125.6214\par
+338  45.05300   2315.0566\par
+339  48.43500   2464.7832\par
+340  52.04000   2677.9396\par
+341  54.90700   3213.1527\par
+342  55.62500   3259.1790\par
+343  56.69500   4879.5075\par
+344  57.47000   4201.1949\par
+345  56.43300   4016.2395\par
+346  52.96200   3484.1644\par
+347  52.97000   3484.0620\par
+348  55.32200   3632.5578\par
+349  57.20600   2627.0095\par
+350  60.02600   2990.0108\par
+351  62.84200   3460.9370\par
+352  65.42400   4161.7278\par
+353  67.84900   5118.1469\par
+354  70.75000   5926.8770\par
+355  73.45000   5262.7348\par
+356  74.75200   5629.9153\par
+357  75.71300   6160.4163\par
+358  77.26000   6677.0453\par
+359  78.12300   7723.4472\par
+360  78.78200   9645.0614\par
+361  40.47700   1388.5947\par
+362  42.46900   1500.8959\par
+363  44.93000   1728.8694\par
+364  47.35000   2052.0505\par
+365  49.80100   2378.2011\par
+366  52.37400   2517.7365\par
+367  53.98300   2602.7102\par
+368  54.65500   2156.9561\par
+369  52.04400   1648.0738\par
+370  47.99100   1786.2654\par
+371  46.83200   1648.8008\par
+372  48.32800   1544.7501\par
+373  61.21000   3119.2365\par
+374  64.77000   4338.2316\par
+375  67.13000   5477.8900\par
+376  68.50000   6960.2979\par
+377  69.61000   9164.0901\par
+378  70.64000  11305.3852\par
+379  70.46000  13221.8218\par
+380  71.52000  13822.5839\par
+381  72.52700   8447.7949\par
+382  73.68000   9875.6045\par
+383  74.87600  11628.3890\par
+384  75.74800  14619.2227\par
+385  59.42100   5586.5388\par
+386  62.32500   6092.1744\par
+387  65.24600   5180.7559\par
+388  68.29000   5690.2680\par
+389  70.72300   5305.4453\par
+390  72.64900   6380.4950\par
+391  73.71700   7316.9181\par
+392  74.17400   7532.9248\par
+393  74.41400   5592.8440\par
+394  76.15100   5431.9904\par
+395  77.15800   6340.6467\par
+396  78.27300   8948.1029\par
+397  66.87000   6876.1403\par
+398  69.03000   8256.3439\par
+399  69.90000  10136.8671\par
+400  70.38000  11399.4449\par
+401  70.29000  13108.4536\par
+402  70.71000  14800.1606\par
+403  70.96000  15377.2285\par
+404  71.58000  16310.4434\par
+405  72.40000  14297.0212\par
+406  74.01000  16048.5142\par
+407  75.51000  17596.2102\par
+408  76.48600  22833.3085\par
+409  70.78000   9692.3852\par
+410  71.81000  11099.6593\par
+411  72.35000  13583.3135\par
+412  72.96000  15937.2112\par
+413  73.47000  18866.2072\par
+414  74.69000  20422.9015\par
+415  74.63000  21688.0405\par
+416  74.80000  25116.1758\par
+417  75.33000  26406.7399\par
+418  76.11000  29804.3457\par
+419  77.18000  32166.5001\par
+420  78.33200  35278.4187\par
+421  34.81200   2669.5295\par
+422  37.32800   2864.9691\par
+423  39.69300   3020.9893\par
+424  42.07400   3020.0505\par
+425  44.36600   3694.2124\par
+426  46.51900   3081.7610\par
+427  48.81200   2879.4681\par
+428  50.04000   2880.1026\par
+429  51.60400   2377.1562\par
+430  53.15700   1895.0170\par
+431  53.37300   1908.2609\par
+432  54.79100   2082.4816\par
+433  45.92800   1397.7171\par
+434  49.82800   1544.4030\par
+435  53.45900   1662.1374\par
+436  56.75100   1653.7230\par
+437  59.63100   2189.8745\par
+438  61.78800   2681.9889\par
+439  63.72700   2861.0924\par
+440  66.04600   2899.8422\par
+441  68.45700   3044.2142\par
+442  69.95700   3614.1013\par
+443  70.84700   4563.8082\par
+444  72.23500   6025.3748\par
+445  48.35700   3522.1107\par
+446  51.35600   3780.5467\par
+447  54.64000   4086.1141\par
+448  56.67800   4579.0742\par
+449  58.79600   5280.9947\par
+450  61.31000   6679.6233\par
+451  64.34200   7213.7913\par
+452  67.23100   6481.7770\par
+453  69.61300   7103.7026\par
+454  72.31200   7429.4559\par
+455  74.17300   5773.0445\par
+456  74.99400   6873.2623\par
+457  41.89300   1418.8224\par
+458  44.44400   1458.9153\par
+459  46.99200   1693.3359\par
+460  49.29300   1814.8807\par
+461  51.13700   2024.0081\par
+462  53.31900   2785.4936\par
+463  56.00600   3503.7296\par
+464  59.79700   3885.4607\par
+465  63.67400   3794.7552\par
+466  67.21700   4173.1818\par
+467  69.80600   4754.6044\par
+468  71.33800   5581.1810\par
+469  45.26200   3048.3029\par
+470  48.57000   3421.5232\par
+471  52.30700   3776.8036\par
+472  55.85500   4358.5954\par
+473  58.20700   4520.2460\par
+474  56.69600   5138.9224\par
+475  56.60400   4098.3442\par
+476  63.15400   4140.4421\par
+477  66.79800   4444.2317\par
+478  69.53500   5154.8255\par
+479  70.73400   5351.5687\par
+480  71.87800   5728.3535\par
+481  34.48200    375.6431\par
+482  35.98300    426.0964\par
+483  37.48500    582.8420\par
+484  38.98700    915.5960\par
+485  40.51600    672.4123\par
+486  42.02400    958.5668\par
+487  43.66200    927.8253\par
+488  45.66400    966.8968\par
+489  47.54500   1132.0550\par
+490  48.24500   2814.4808\par
+491  49.34800   7703.4959\par
+492  51.57900  12154.0897\par
+493  35.92800    328.9406\par
+494  38.04700    344.1619\par
+495  40.15800    380.9958\par
+496  42.18900    468.7950\par
+497  44.14200    514.3242\par
+498  44.53500    505.7538\par
+499  43.89000    524.8758\par
+500  46.45300    521.1341\par
+ [ reached getOption("max.print") -- omitted 1204 rows ]\par
+}
+ 
